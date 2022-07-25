@@ -94,3 +94,4 @@ while game_running:
     screen.blit(win, (win_x, win_y))
 
     pg.display.update()
+# привет Тарас!!!
