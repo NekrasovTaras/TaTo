@@ -9,14 +9,14 @@ pl_size = 50
 player = pg.Surface((pl_size, pl_size))
 player.fill('#ab0995')  # Цвет
 pl_x, pl_y = WIDTH // 2, HEIGHT // 2  # координаты игрока
-pl_step = 50  # шаг
+pl_step = 10 # шаг
 
 # 1 противник
 en_size = 50
 enemy = pg.Surface((en_size, en_size))
 enemy.fill('#5e755d')
 en_x, en_y = 0, 0
-en_step = 10
+en_step = 3
 
 # 2 противник
 en2_size = 50
@@ -70,12 +70,14 @@ def player_got_win():
 
 game_running = True
 while game_running:
-    pg.time.delay(100)
+    pg.time.delay(50)
     for e in pg.event.get():
         if e.type == pg.QUIT:  # Если был нажат крестик
             game_running = False
-        elif e.type == pg.KEYDOWN:  # Если нажата клавиша
-            pl_x, pl_y = move_player(pl_x, pl_y)  # Двигаем игрока
+
+        pressed = pg.key.get_pressed()
+        if pressed[pg.K_LEFT] or pressed[pg.K_a] or pressed[pg.K_RIGHT] or pressed[pg.K_d] or pressed[pg.K_UP] or pressed[pg.K_w] or pressed[pg.K_DOWN] or pressed[pg.K_s]:
+            pl_x, pl_y = move_player(pl_x, pl_y)
 
     en_x, en_y = move_enemy(en_x, en_y) # Двигаем противников
     en2_x, en2_y = move_enemy(en2_x, en2_y)
@@ -94,6 +96,3 @@ while game_running:
     screen.blit(win, (win_x, win_y))
 
     pg.display.update()
-# привет Тарас!!!
-# whats up??
-# \(^.^)/
