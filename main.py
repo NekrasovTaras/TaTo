@@ -95,3 +95,4 @@ while game_running:
 
     pg.display.update()
 # привет Тарас!!!
+# whats up??
